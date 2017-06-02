@@ -1,6 +1,5 @@
 package main.feed;
 
-import main.feed.DB.BdWork;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
