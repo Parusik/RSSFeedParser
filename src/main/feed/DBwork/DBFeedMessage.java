@@ -1,18 +1,14 @@
 package main.feed.DBwork;
 
+import main.feed.ForParse.Message;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Embedded;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
 
-import java.io.Serializable;
+import org.mongodb.morphia.annotations.Id;
 import java.util.Date;
 import java.util.HashMap;
-@Entity
-public class DBFeedMessage implements Serializable {
+public class DBFeedMessage  {
     @Id
     private ObjectId id;
-
     private String title;
     private String link;
     private String description;
@@ -21,16 +17,23 @@ public class DBFeedMessage implements Serializable {
 
     private String name;
     private Date myDate;
-    @Embedded
     private HashMap<String,Integer> words;
 
     public DBFeedMessage() {super(); }
 
-    public DBFeedMessage( String title, String link, String description, String author ) throws Exception {
+    public DBFeedMessage( String title, String link, String description, String author ){
         this.author = author;
         this.description = description;
         this.link = link;
         this.title = title;
+        this.myDate = new Date();
+    }
+
+    public DBFeedMessage(Message message) {
+        this.author = message.getAuthor();
+        this.description = message.getDescription();
+        this.link = message.getLink();
+        this.title = message.getTitle();
         this.myDate = new Date();
     }
 

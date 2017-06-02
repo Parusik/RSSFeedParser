@@ -1,17 +1,13 @@
-package main.feed;
+package main.feed.ForParse;
 
 
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 
-
-/**
- * Created by Оля on 01.06.2017.
- */
 public class FileWork {
 
-    public List<String>  getListFromFile(String path) {
+    static public List<String>  getListFromFile(String path) {
         File file = new File(path);
         Scanner sc = null;
         try {
@@ -28,6 +24,5 @@ public class FileWork {
         return result;
 
     }
-
 
 }

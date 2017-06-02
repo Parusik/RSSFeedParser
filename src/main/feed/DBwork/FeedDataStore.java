@@ -1,11 +1,13 @@
 package main.feed.DBwork;
 
-import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import main.feed.ForParse.FileWork;
+import main.feed.ForParse.Message;
+import main.feed.ForParse.WorkWithXML;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.query.Query;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -46,6 +48,17 @@ public class FeedDataStore {
 
     public void refreshNews(){
         dataStore.delete(dataStore.createQuery(DBFeedMessage.class).filter("myDate <=", dateLast));
+
+        List<String> rss = FileWork.getListFromFile("C:\\Users\\Parus\\Desktop\\Новая папка\\RSSFeedParser\\src\\main\\feed\\ForParse\\rss.txt");
+        WorkWithXML xml = new WorkWithXML();
+        rss.forEach(s -> {
+            List<DBFeedMessage> feed = new ArrayList<>();
+            xml.start(s).forEach(message -> {
+                if (message.valid())
+                feed.add(new DBFeedMessage(message).index());
+            });
+            feed.forEach(this::saveFeedMessage);
+        });
     }
 
     public List<DBFeedMessage> getFeedByKeword(String keyword) {

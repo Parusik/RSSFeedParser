@@ -1,11 +1,12 @@
-package main.feed;
+package main.feed.ForParse;
 
 /**
  * Created by Оля on 02.06.2017.
  */
 
+import main.feed.ForParse.Message;
 import org.w3c.dom.*;
-import org.xml.sax.*;
+
 import java.io.*;
 import javax.xml.parsers.*;
 import java.io.IOException;
@@ -51,6 +52,7 @@ public class WorkWithXML {
             Node nNode = itemNodes.item(i);
             Element eElement = (Element) nNode;
             try {
+
                 message.setAuthor(eElement.getElementsByTagName("author").item(0).getTextContent());
                 message.setLink(eElement.getElementsByTagName("link").item(0).getTextContent());
                 message.setDescription(eElement.getElementsByTagName("description").item(0).getTextContent());

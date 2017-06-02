@@ -21,5 +21,4 @@ public class ParserController {
             return new ArrayList<>();
         }
     }
-
 }

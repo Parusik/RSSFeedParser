@@ -1,5 +1,6 @@
 package main.feed.DBwork;
 
+import main.feed.ForParse.FileWork;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -68,7 +69,13 @@ public class MorphologicServise {
                 instream.close();
             }
         }
-         return words;
+        List<String> stopwords = FileWork.getListFromFile("C:\\Users\\Parus\\Desktop\\Новая папка\\RSSFeedParser\\src\\main\\feed\\DBwork\\stop-words.txt");
+        words.forEach((a,b)-> {
+            if (stopwords.contains(a)){
+                words.remove(a);
+            }
+        });
+        return words;
     }
 
     static String convertStreamToString(java.io.InputStream is) {

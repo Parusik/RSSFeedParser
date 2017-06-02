@@ -1,4 +1,4 @@
-package main.feed;
+package main.feed.ForParse;
 
 
 
@@ -43,4 +43,15 @@ public class Message {
         return this.author;
     }
 
+    public boolean valid( ) {
+        if (this.description == "" || this.title == "" || this.link == ""){
+            return false;
+        }
+         return true;
+    }
+    @Override
+    public String toString() {
+        return "FeedMessage [title=" + title + ", description=" + description
+                + ", link=" + link + ", author=" + author + "]";
+    }
 }
