@@ -19,52 +19,14 @@
             outline:none;
             box-sizing: border-box;
         }
-        .empty{
-            height:calc(100vh - 250px);
-            display: flex;
-        }
-        .empty p {
-            font-size: 40px;
-            font-weight: 900;
-            opacity: .3;
-            margin: auto;
-            font-family: Arial;
-        }
-        .empty i {
-            position: absolute;
-            margin-left: 50%;
-            margin-top: 30px;
-            transform: translateX(-50%);
 
-            background: url(https://cdn3.iconfinder.com/data/icons/iconic-1/32/arrow_up_alt1-512.png) no-repeat;
-            background-size: 100%;
-            width: 50px;
-            height: 50px;
-            display: inline-block;
-
-        }
-
-        body{
-            margin-bottom:30px;
-            width: 100%;
-        }
-        body:after{
-            z-index: -1;
-            position :fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            content: "";
-            opacity: 0.1;
-        }
         .loader {
             margin: auto;
             border: 16px solid #f3f3f3;
             border-radius: 50%;
-            border-top: 16px solid rebeccapurple;
-            width: 120px;
-            height: 120px;
+            border-top: 16px solid hotpink;
+            width: 80px;
+            height: 80px;
             -webkit-animation: spin 2s linear infinite;
             animation: spin 2s linear infinite;
         }
@@ -91,74 +53,6 @@
                 transform: rotate(360deg);
             }
         }
-        header{
-            display: flex;
-            justify-content: space-between;
-            box-shadow: 0 0 15px black;
-            position: fixed;
-            height: 50px;
-            width: 100%;
-            top:0;
-            z-index: 1;
-            background-color: rebeccapurple;
-        }
-        header .logo{
-            text-shadow: 1px 1px 3px black;
-            font-family: Arial;
-            margin-left: 35px;
-            font-weight: bold;
-            cursor: pointer;
-            color: white;
-            line-height: 50px;
-        }
-        header .add {
-            display: flex;
-            align-items: center;
-            margin-right: 10px;
-            line-height: 50px;
-            color: lightgray;
-            font-weight: 900;
-            cursor: default;
-            font-size: 40px;
-        }
-        header p {
-            transition: 40s easy-in;
-            opacity:.5;
-        }
-        header .add .active{
-            opacity: 1;
-        }
-        header .add .active:hover {
-            text-shadow: 1px 1px 5px white;
-        }
-        .valid{
-            cursor: pointer;
-            color: white;
-        }
-        header .add input {
-            border: 1px black solid;
-            box-shadow: inset 0 0 1px rebeccapurple;
-            margin-right: 10px;
-            height: 28px;
-            border-radius: 5px;
-            padding: 0 5px;
-            width: 330px;
-        }
-
-
-        header .embl {
-            cursor: pointer;
-            position: absolute;
-            transform: translateY(-50%);
-            top: 50%;
-            left: 5px;
-            background: url(http://www.macworld.co.uk/graphics/icons/rss-feeds.png) no-repeat 0 0 ;
-            width:30px;
-            height:30px;
-        }
-        #content{
-            margin-top: 50px;
-        }
         #form{
             position: relative;
             height:150px;
@@ -172,58 +66,16 @@
             opacity: .4;
             height: 100%;
         }
-        .res{
-            background-color: rgba(211,211,211,.4);
-            align-items: center;
-            height: 50px;
-            position: relative;
-            display: flex;
-            flex-wrap: wrap;
-            overflow-X: auto;
-            overflow-Y: hidden;
-        }
 
-        .list{
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-around;
-            overflow: auto;
-        }
-        .list div {
-            white-space: nowrap;
-            transition: 1s easy-in;
-            border-radius: 100px;
-            margin: 0 5px;
-            line-height: 20px ;
-            height: 30px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            min-width: 240px;
-            max-width: 300px;
-            padding: 5px;
-            font-weight: 200;
-            font-size: 16px;
-            background-color: rgba(102,51,153,.5);
-        }
+
         #form #search-block {
             position: relative;
             text-align: left;
             margin: auto;
         }
 
-        .opened {
-            margin: 5px;
-            font-size: 12px;
-            padding-right: 10px;
-            line-height: 10px
-        }
-        .opened i {
-            width: 20px;
-            height: 20px;
-        }
-
         #search-block .search-label {
-            margin-top: 40px;
+            margin: 10px;
             display: flex;
             align-items: center;
             -moz-user-select: none;
@@ -236,53 +88,21 @@
             font-weight: bold;
             text-transform: uppercase
         }
-        #search-block .search-label i{
-            display: inline-block;
-            background: url("http://www.collegedegreesearch.net/wp-content/uploads/2014/02/search.png") no-repeat;
-            height: 30px;
-            width: 30px;
-            background-size: 100%;
-        }
 
-        #search-block .animation {
-            transition: .6s ease-in
-        }
 
         .search-field {
+            background-color: white;
             border-radius: 2px;
             box-shadow: 0 0 5px grey;
             color: #000024;
-            width: 0;
+            width: 500px;
             transition: .4s ease-in;
-            background-color: transparent;
             font-size: 14px;
+            padding: 0 10px;
             height: 35px;
         }
 
-        #search-block .search-field:focus {
-            width: 323px;
-            padding: 0 10px;
-            background-color: #fff
-        }
-        .inputt{
-            width: 323px;
-            padding: 0 10px;
-            background-color: #fff
-        }
 
-        @media (min-width: 1280px) and (max-width:1659px) {
-            #search-block .search-field:focus {
-                width:242.25px
-            }
-        }
-
-        #search-block .opened {
-            font-size: 12px;
-            padding-right: 10px;
-        }
-        #search-block .animation {
-            transition: .47s ease-in
-        }
         .itemBlock{
             display: flex;
             position: relative;
@@ -356,25 +176,6 @@
             this.submit = this.submit.bind(this);
         }
 
-        componentDidMount() {
-            let that = this;
-            $(this.textLabel).on("click", function() {
-                var t = $(this)
-                    , o = $("#search");
-                return !(o.width() > 0) && void o.on("focus", function() {
-                        t.addClass("opened");
-                    }).on("focusout", function() {
-                        o.addClass('inputt');
-                        if (that.state.input ===""){
-                            t.removeClass("opened");
-                            o.removeClass("inputt");
-                        }
-                    });
-            }).one("click", function() {
-                $(this).addClass("animation")
-            });
-        }
-
         handler(e) {
             this.setState({input:e.target.value}) ;
         }
@@ -410,26 +211,17 @@
 
         render() {
             const news = this.props.news;
-            if (news.length)
-                return(
-                        <div className="itemBlock">
-                            {(news.length)?news.map((item,n) => (
-                                            <div key={n} className="item">
-                                                <p className="number"><i>{item.number}</i></p>
-                                                <p className="title">{item.title}</p>
-                                                <p className="author">{item.author}</p>
-                                                <p className="description">{item.description}</p>
-                                                <p><a className="link" href={item.link}>{item.link}</a></p>
-                                                <p><a className="link" href={item.guid}>{item.guid}</a></p>
-                                            </div>)):""}
-                        </div>
-                );
-            else
-                return(
-                    <div className="empty">
-                    <i/>
-                    <p> Enter search keys to find news!</p>
-                </div>);
+            return(
+                    <div className="itemBlock">
+                        {(news.length)?news.map((item,n) => (
+                                        <div key={n} className="item">
+                                            <p className="title">{item.title}</p>
+                                            <p className="author">{item.author}</p>
+                                            <p className="description">{item.description}</p>
+                                            <p><a className="link">{item.link}</a></p>
+                                        </div>)):""}
+                    </div>
+            );
         }
     }
     class App extends  React.Component {
@@ -438,27 +230,9 @@
             this.state= {
                 loading:false,
                 news:[],
-                res:"",
-                valid:false,
-                resLinks:[]
             };
             this.loadnews = this.loadnews.bind(this);
-            this.handler = this.handler.bind(this);
-            this.submit = this.submit.bind(this);
-            this.updateLinks = this.updateLinks.bind(this);
         }
-
-        updateLinks(){
-            let that = this;
-            axios({
-                method:"GET",
-                url:"/getLinks",
-            }).then((an) =>{
-                that.setState({resLinks: an.data.map((l) =>{return {link:l.link} })});
-            })
-        }
-
-        componentDidMount(){this.updateLinks();}
 
         loadnews(input){
             let that = this;
@@ -470,46 +244,11 @@
                 headers: {'Content-type': 'application/x-www-form-urlencoded'}
             }).then((data) =>{
                 console.log(data);
-                if (data.data.empty === "false"){
-                    that.setState({news:data.data.feeds.map((el) =>el.feed).sort((a,b) => {return a.number - b.number})});
-                }
+                that.setState({news:data.data});
                 that.setState({loading:false});
             }).catch((e)=> {
                 that.setState({loading:false});
             });
-        }
-
-        handler(e) {
-            let that = this;
-            if(this.state.res === "") {
-                $(this.resInput).css({backgroundColor:"white"});
-                return false;
-            }
-
-            if (this.state.res.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)) {
-                axios.get(this.state.res)
-                    .then((ans)=> {
-                        if (ans.headers["content-type"].match(/(xml|rss)/g).length > 0) {
-                            $(this.resInput).css({backgroundColor:"lightgreen"});
-                            that.setState({valid:true});
-                            $(this.resPlus).addClass('active');
-                        }
-                        else{
-                            $(this.resInput).css({backgroundColor:"lightcoral"});
-                            that.setState({valid:false});
-                            $(this.resPlus).removeClass('active');
-                        }
-                    }).catch((e =>{
-                        $(this.resInput).css({backgroundColor:"lightcoral"});
-                        that.setState({valid:false});
-                        $(this.resPlus).removeClass('active');
-                }));
-            }
-            else {
-                that.setState({valid:false});
-                $(this.resPlus).removeClass('active');
-                $(this.resInput).css({backgroundColor:"lightcoral"})
-            }
         }
 
         serialize(obj) {
@@ -520,60 +259,11 @@
                 }
             return str.join("&");
         };
-        gavno() {
-            this.setState({ res:""});
-            this.setState({valid:false});
-            this.resInput.value="";
-            $(this.resInput).css({backgroundColor:"white"}).prop('disabled', false);
-            $(this.resInput).text("");
-            $(this.resPlus).text("+").removeClass('round').prop('disabled', false);
-        }
-
-        submit() {
-            let that = this;
-            if ( !$(this.resPlus).hasClass('round') && this.state.valid){
-                $(this.resInput).attr("disabled","");
-                $(this.resPlus).text("↻").addClass('round').removeClass('active').attr("disabled","");
-                axios({
-                    method:"POST",
-                    url:"/parse",
-                    data: that.serialize({xmlDocument:that.state.res}),
-                    headers: {'Content-type': 'application/x-www-form-urlencoded'}
-                })
-                    .then((a)=>{
-                        console.log(a.data);
-                        that.updateLinks();
-                        that.gavno();
-                    })
-                    .catch((err)=>{
-                        that.gavno();
-                        throw Error(err);
-                    });
-            }
-        }
 
         render() {
             return(
                     <div>
-                        <header>
-                            <span className="logo">News.UK Parser</span>
-                            <span className="embl">&nbsp;</span>
-
-                            <span className="add">
-                            <input type="url"
-                                   required
-                                   ref={(label) => { this.resInput = label; }}
-                                   onChange={(e)=>{this.setState({res:e.target.value});}}
-                                   onKeyUp={this.handler}/>
-                            <p ref={(label) => { this.resPlus = label; }} onClick={this.submit}>+</p>
-                        </span>
-                        </header>
                         <Form load={this.loadnews}/>
-                        <div className="res">
-                            <div className="list">
-                                {this.state.resLinks.map((e,i) => (<div key={i}>{e.link.replace(/https?\:\/\//,"")}</div>))}
-                            </div>
-                        </div>
                         {(!this.state.loading)?
                                 <News news = {this.state.news}/>:
                             (
