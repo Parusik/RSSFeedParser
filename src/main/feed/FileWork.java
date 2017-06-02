@@ -12,14 +12,19 @@ import java.util.*;
 public class FileWork {
     File file;
     String path;
-    public FileWork (String s) throws FileNotFoundException {
+    public FileWork (String s) {
         this.path = s;
         file = new File(path);
     }
 
 
-    public List<String>  getListFromFile() throws FileNotFoundException {
-        Scanner sc = new Scanner(file);
+    public List<String>  getListFromFile() {
+        Scanner sc = null;
+        try {
+            sc = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            System.out.print("File not found");
+        }
 
         List<String> result = new ArrayList<>();
         while (sc.hasNextLine()) {

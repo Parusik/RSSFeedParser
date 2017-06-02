@@ -16,20 +16,33 @@ public class WorkWithXML {
 
     String channel="";
 
-    public List<Message> start(String adress) throws Exception
+    public List<Message> start(String adress)
     {
 
         List<Message> messages = new ArrayList<>();
 
-        URL url = new URL(adress);
-        URLConnection connection = url.openConnection();
-        Document doc = parseXML(connection.getInputStream());
-        connection = url.openConnection();
+        URL url = null;
+        URLConnection connection = null;
+        Document doc = null;
+        System.out.println(adress);
+        try {
+            url = new URL(adress);
+            connection = url.openConnection();
+            doc = parseXML(connection.getInputStream());
+            connection = url.openConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Node chan = doc.getElementsByTagName("channel").item(0);
         Element uniq = (Element)chan;
         channel = uniq.getElementsByTagName("title").item(0).getTextContent().replace(" ","").replace("|","") + ".txt";
 
-        getStringOfXML(new BufferedReader(new InputStreamReader(connection.getInputStream())));
+        try {
+            getStringOfXML(new BufferedReader(new InputStreamReader(connection.getInputStream())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         NodeList itemNodes = doc.getElementsByTagName("item");
         for(int i=0; i<itemNodes.getLength();i++)
@@ -37,14 +50,16 @@ public class WorkWithXML {
             Message message = new Message();
             Node nNode = itemNodes.item(i);
             Element eElement = (Element) nNode;
+            try {
+                message.setAuthor(eElement.getElementsByTagName("author").item(0).getTextContent());
+                message.setLink(eElement.getElementsByTagName("link").item(0).getTextContent());
+                message.setDescription(eElement.getElementsByTagName("description").item(0).getTextContent());
+                message.setTitle(eElement.getElementsByTagName("title").item(0).getTextContent());
+            }
+            catch(Exception e){
 
-            message.setAuthor(eElement.getElementsByTagName("author").item(0).getTextContent());
-            message.setLink(eElement.getElementsByTagName("link").item(0).getTextContent());
-            message.setDescription(eElement.getElementsByTagName("description").item(0).getTextContent());
-            message.setTitle(eElement.getElementsByTagName("title").item(0).getTextContent());
-
+        }
             messages.add(message);
-
         }
         return messages;
     }
@@ -86,7 +101,6 @@ public class WorkWithXML {
         {
             throw ex;
         }
-
         return doc;
     }
 }
