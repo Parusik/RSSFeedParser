@@ -15,7 +15,7 @@ public class ParserController {
     @RequestMapping(value = "/getNews", method = RequestMethod.POST)
     public List<DBFeedMessage> parse(@RequestParam(value = "input", defaultValue = "") String input) throws Exception {
         try {
-            return  FeedDataStore.getInstance().getFeedByKeword(input);
+            return  FeedDataStore.getInstance().getFeedByKeword(input.trim());
         }
         catch (NoSuchElementException e) {
             return new ArrayList<>();
